@@ -27,7 +27,7 @@ export const MovieCard = () => {
   }, [id]);
 
   const { poster_path, title, overview, vote_average, genres } = movie;
-  const genresName = getG(genres);
+  const genresName = genres.map(genre => genre.name);
 
   return isLoading ? (
     <Loader />
@@ -54,11 +54,11 @@ export const MovieCard = () => {
   );
 };
 
-function getG(arr) {
-  const array = arr.map(el => el.name);
-  if (array.length <= 2) {
-    return array;
-  } else {
-    return array.slice(0, 2) + ', Other';
-  }
-}
+// function getG(arr) {
+//   const array = arr.map(el => el.name);
+//   if (array.length <= 2) {
+//     return array;
+//   } else {
+//     return array.slice(0, 2) + ', Other';
+//   }
+// }
