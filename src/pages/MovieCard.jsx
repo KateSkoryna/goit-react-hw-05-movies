@@ -25,7 +25,7 @@ export const MovieCard = () => {
     findMovieInfo();
   }, [id]);
 
-  const { poster_path, title, overview, vote_average, genres } = movie;
+  const { poster_path, title, overview, vote_average } = movie;
   // const genresName = genres.map(genre => genre.name);
 
   return isLoading ? (
