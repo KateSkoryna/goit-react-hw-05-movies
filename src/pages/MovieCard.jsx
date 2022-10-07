@@ -26,7 +26,8 @@ export const MovieCard = () => {
     findMovieInfo();
   }, [id]);
 
-  const { poster_path, title, overview, vote_average } = movie;
+  const { poster_path, title, overview, vote_average, genres } = movie;
+  const genresName = getG(genres);
 
   return isLoading ? (
     <Loader />
@@ -38,9 +39,12 @@ export const MovieCard = () => {
       />
       <div>
         <h2>{`${title}`}</h2>
+        <h3>User Score</h3>
         <p>{`${vote_average}`}</p>
         <h3>Overview</h3>
         <p>{`${overview}`}</p>
+        <h3>Genres</h3>
+        <p>{`${genresName}`}</p>
       </div>
       <div>
         <h3>Additional info</h3>
@@ -49,3 +53,12 @@ export const MovieCard = () => {
     </div>
   );
 };
+
+function getG(arr) {
+  const array = arr.map(el => el.name);
+  if (array.length <= 2) {
+    return array;
+  } else {
+    return array.slice(0, 2) + ', Other';
+  }
+}
