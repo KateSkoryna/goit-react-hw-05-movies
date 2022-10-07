@@ -6,7 +6,6 @@ import Loader from 'components/Loader';
 
 export const MovieCard = () => {
   const { id } = useParams();
-  console.log(id);
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,16 +34,16 @@ export const MovieCard = () => {
     <div>
       <img
         src={`https://www.themoviedb.org/t/p/w500${poster_path}`}
-        alt={`${title}`}
+        alt={title}
       />
       <div>
-        <h2>{`${title}`}</h2>
+        <h2>{title}</h2>
         <h3>User Score</h3>
-        <p>{`${vote_average}`}</p>
+        <p>{vote_average}</p>
         <h3>Overview</h3>
-        <p>{`${overview}`}</p>
+        <p>{overview}</p>
         <h3>Genres</h3>
-        <p>{`${genresName}`}</p>
+        <p>{genresName}</p>
       </div>
       <div>
         <h3>Additional info</h3>
@@ -53,12 +52,3 @@ export const MovieCard = () => {
     </div>
   );
 };
-
-// function getG(arr) {
-//   const array = arr.map(el => el.name);
-//   if (array.length <= 2) {
-//     return array;
-//   } else {
-//     return array.slice(0, 2) + ', Other';
-//   }
-// }
