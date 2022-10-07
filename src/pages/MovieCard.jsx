@@ -14,7 +14,7 @@ export const MovieCard = () => {
       try {
         setIsLoading(true);
         const movieInfo = await fetchDataById(id);
-        console.log(movieInfo);
+        console.log();
         setMovie(movieInfo);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ export const MovieCard = () => {
   }, [id]);
 
   const { poster_path, title, overview, vote_average, genres } = movie;
-  const genresName = genres.map(genre => genre.name);
+  // const genresName = genres.map(genre => genre.name);
 
   return isLoading ? (
     <Loader />
@@ -43,7 +43,7 @@ export const MovieCard = () => {
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
-        <p>{genresName}</p>
+        {/* <p>{genresName}</p> */}
       </div>
       <div>
         <h3>Additional info</h3>
