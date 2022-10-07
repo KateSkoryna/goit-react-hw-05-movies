@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { fetchDataById } from 'services/api';
 import Loader from 'components/Loader';
@@ -7,12 +8,11 @@ import Loader from 'components/Loader';
 export const MovieCard = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const findMovieInfo = async () => {
       try {
-        setIsLoading(true);
         const movieInfo = await fetchDataById(id);
         console.log();
         setMovie(movieInfo);
@@ -25,10 +25,9 @@ export const MovieCard = () => {
     findMovieInfo();
   }, [id]);
 
-  const { poster_path, title, overview, vote_average } = movie;
-  // const genresName = genres.map(genre => genre.name);
+  const { poster_path, title, overview, vote_average, genres } = movie;
 
-  return isLoading ? (
+  return isLoading && movie !== {} ? (
     <Loader />
   ) : (
     <div>
@@ -43,10 +42,18 @@ export const MovieCard = () => {
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
-        {/* <p>{genresName}</p> */}
+        <p>{genres.map(({ name }) => name).join(', ')}</p>
       </div>
       <div>
         <h3>Additional info</h3>
+        <ul>
+          <li>
+            <NavLink to="cast">Cast</NavLink>
+          </li>
+          <li>
+            <NavLink to="review">Review</NavLink>
+          </li>
+        </ul>
         <Outlet />
       </div>
     </div>

@@ -5,12 +5,11 @@ import { fetchTrendData } from 'services/api';
 
 const useFetchItems = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const findTrendFilms = async () => {
       try {
-        setIsLoading(true);
         const moviesList = await fetchTrendData();
         setMovies(movies => [...movies, ...moviesList]);
       } catch (error) {

@@ -28,7 +28,9 @@ const fetchDataById = async id => {
   const url = 'https://api.themoviedb.org/3/movie/';
 
   try {
-    const { data } = await axios.get(`${url}${id}?api_key=${KEY}`);
+    const { data } = await axios.get(
+      `${url}${id}?api_key=${KEY}&append_to_response=reviews`
+    );
     return data;
   } catch (error) {
     console.error('Something wrong! Can not search films by ID' + error);
