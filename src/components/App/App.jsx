@@ -12,10 +12,10 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<MovieDataPage />}>
-          <Route path="movies/:id" element={<MovieCard />}>
+        <Route path="movies/:id" element={<MovieCard />}>
             <Route path="cast" element={<MovieCastBox />} />
             <Route path="review" element={<MovieReviewBox />} />
-          </Route>
+        </Route>
         </Route>
 
         <Route path="*" element={<Home />} />
