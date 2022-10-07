@@ -2,12 +2,11 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Gallery = ({ movies }) => {
-  console.log(movies);
   return (
     <ul>
-      {movies.map(movie => (
-        <li key={movie.id}>
-          <NavLink>{movie.title}</NavLink>
+      {movies.map(({ id, title }) => (
+        <li key={id}>
+          <NavLink to={`${id}`}>{title}</NavLink>
         </li>
       ))}
     </ul>
