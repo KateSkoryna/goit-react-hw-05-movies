@@ -4,12 +4,10 @@ import Gallery from 'components/Gallery';
 import { fetchSearchData } from 'services/api';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import Button from 'components/Button';
 
-const MovieDataPage = () => {
+export const MovieDataPage = () => {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ const MovieDataPage = () => {
     const findMovies = async () => {
       try {
         setIsLoading(true);
-        const moviesList = await fetchSearchData(value, page);
+        const moviesList = await fetchSearchData(value);
         moviesList.length === 0
           ? Notify.failure(
               'Sorry! There is no photo with this name. Try something else!'
@@ -33,13 +31,12 @@ const MovieDataPage = () => {
     };
 
     findMovies();
-  }, [value, page]);
+  }, [value]);
 
   const addValue = ({ inputValue }) => {
     if (inputValue !== value) {
       setValue(inputValue);
       setMovies([]);
-      setPage(1);
     } else {
       setValue(inputValue);
     }
@@ -53,13 +50,6 @@ const MovieDataPage = () => {
       ) : (
         <Gallery movies={movies} />
       )}
-      {movies.length % 20 === 0 && movies.length !== 0 ? (
-        <Button onClick={() => setPage(() => page + 1)} />
-      ) : (
-        ''
-      )}
     </section>
   );
 };
-
-export default MovieDataPage;
