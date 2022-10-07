@@ -1,28 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import Gallery from 'components/Gallery';
 import Loader from 'components/Loader';
-import { fetchTrendData } from 'services/api';
-
-const useFetchItems = () => {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const findTrendFilms = async () => {
-      try {
-        const moviesList = await fetchTrendData();
-        setMovies(movies => [...movies, ...moviesList]);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    findTrendFilms();
-  }, []);
-
-  return { movies, isLoading };
-};
+import { useFetchItems } from 'hooks';
 
 export const Home = () => {
   const { movies, isLoading } = useFetchItems();

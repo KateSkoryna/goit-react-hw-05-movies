@@ -29,7 +29,7 @@ const fetchDataById = async id => {
 
   try {
     const { data } = await axios.get(
-      `${url}${id}?api_key=${KEY}&append_to_response=reviews`
+      `${url}${id}?api_key=${KEY}&append_to_response=reviews,credits`
     );
     return data;
   } catch (error) {
@@ -37,4 +37,32 @@ const fetchDataById = async id => {
   }
 };
 
-export { fetchTrendData, fetchSearchData, fetchDataById };
+const fetchDataByCast = async id => {
+  const url = 'https://api.themoviedb.org/3/movie/';
+
+  try {
+    const { data } = await axios.get(`${url}${id}/credits?api_key=${KEY}`);
+    return data;
+  } catch (error) {
+    console.error('Something wrong! Can not search films by ID' + error);
+  }
+};
+
+const fetchDataByReviews = async id => {
+  const url = 'https://api.themoviedb.org/3/movie/';
+
+  try {
+    const { data } = await axios.get(`${url}${id}/reviews?api_key=${KEY}`);
+    return data;
+  } catch (error) {
+    console.error('Something wrong! Can not search films by ID' + error);
+  }
+};
+
+export {
+  fetchTrendData,
+  fetchSearchData,
+  fetchDataById,
+  fetchDataByCast,
+  fetchDataByReviews,
+};
