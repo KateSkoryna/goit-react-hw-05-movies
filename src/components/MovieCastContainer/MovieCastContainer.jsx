@@ -1,7 +1,6 @@
 // import PropTypes from 'prop-types';
 
 const MovieCastContainer = ({ name, character, profile_path }) => {
-  console.log(name);
   return (
     <>
       <img

@@ -17,11 +17,20 @@ const SearchForm = ({ onSubmit }) => {
       Notify.failure('Please, enter something for me to find!');
     } else {
       onSubmit(values);
+      window.localStorage.setItem(
+        'values',
+        JSON.stringify(Object.values(values))
+      );
     }
   };
   return (
     <SearchbarBox>
-      <Formik initialValues={{ inputValue: '' }} onSubmit={hendleSubmit}>
+      <Formik
+        initialValues={{
+          inputValue: JSON.parse(window.localStorage.getItem('values')) ?? '',
+        }}
+        onSubmit={hendleSubmit}
+      >
         <FormStyles>
           <LabelStyles>
             <Field

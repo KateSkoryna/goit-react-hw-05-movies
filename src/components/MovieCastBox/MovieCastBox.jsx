@@ -10,7 +10,6 @@ const MovieCastBox = () => {
   const { movieInfo, isLoading } = useFetchInfo(id, fetchDataByCast);
 
   const { cast } = movieInfo;
-  console.log(cast);
 
   return isLoading && movieInfo !== {} ? (
     <Loader />

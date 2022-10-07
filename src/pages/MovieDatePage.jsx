@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SeachForm from 'components/SearchForm';
 import Gallery from 'components/Gallery';
 import { fetchSearchData } from 'services/api';
@@ -7,8 +8,15 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const MovieDataPage = () => {
   const [value, setValue] = useState('');
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('movies')) ?? [];
+  });
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    window.localStorage.setItem('movies', JSON.stringify(movies));
+  }, [movies]);
 
   useEffect(() => {
     if (!value) {
@@ -26,12 +34,13 @@ export const MovieDataPage = () => {
       } catch (error) {
         console.log(error);
       } finally {
+        setSearchParams({ query: value });
         setIsLoading(false);
       }
     };
 
     findMovies();
-  }, [value]);
+  }, [value, setSearchParams]);
 
   const addValue = ({ inputValue }) => {
     if (inputValue !== value) {
@@ -45,11 +54,7 @@ export const MovieDataPage = () => {
   return (
     <section>
       <SeachForm onSubmit={addValue} />
-      {isLoading && movies.length === 0 ? (
-        <Loader />
-      ) : (
-        <Gallery movies={movies} />
-      )}
+      {isLoading && searchParams ? <Loader /> : <Gallery movies={movies} />}
     </section>
   );
 };

@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Gallery = ({ movies }) => {
-  console.log(movies);
   return (
     <ul>
       {movies.map(({ id, title }) => (
