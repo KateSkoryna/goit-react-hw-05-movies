@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import { ReviewText } from './MoviwReviewContainer.styled';
 
 const MovieReviewContainer = ({ author, content }) => {
   return (
     <>
       <h4>Author: {author}</h4>
-      <p>{content}</p>
+      <ReviewText>{content}</ReviewText>
     </>
   );
 };

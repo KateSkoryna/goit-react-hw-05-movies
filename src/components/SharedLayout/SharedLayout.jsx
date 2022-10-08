@@ -11,7 +11,9 @@ const SharedLayout = () => {
       <Container>
         <Header>
           <Navigation>
-            <Link to="/">Home</Link>
+            <Link to="/" end>
+              Home
+            </Link>
             <Link to="/movies">Movies</Link>
           </Navigation>
         </Header>
