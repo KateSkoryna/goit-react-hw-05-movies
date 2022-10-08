@@ -2,13 +2,17 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 
 export const SearchbarBox = styled.div`
-  position: fixed;
   width: 100%;
-  z-index: 50;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-image: linear-gradient(to top, #d2fffc, #00b4ff);
-  height: 80px;
+  margin-bottom: 10px;
+  background-image: repeating-radial-gradient(
+    circle,
+    black,
+    red 20px,
+    black 30px,
+    red 20px
+  );
 `;
 
 export const FormStyles = styled(Form)`
@@ -35,6 +39,11 @@ export const InputStyles = styled.input`
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: rgba(255, 0, 0, 0.7);
+  }
 `;
 
 export const ButtonBox = styled.button`
@@ -44,8 +53,12 @@ export const ButtonBox = styled.button`
   display: block;
   padding-top: 5px;
   width: 30px;
-  height: 30px;
-  background-color: rgba(0, 180, 255, 0.5);
-  border-radius: 4px;
+  height: 100%;
+  background-color: white;
   border: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 0, 0, 0.7);
+  }
 `;

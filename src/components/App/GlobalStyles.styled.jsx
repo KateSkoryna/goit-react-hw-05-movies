@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 const GlobalStyles = css`
   body {
     margin: 0;
-    background-color: #e1e4e9;
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
@@ -15,13 +15,15 @@ const GlobalStyles = css`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  h1,
-  h2 {
-    font-size: 42px;
+  h1 {
+    font-size: 48px;
     font-weight: 900;
     margin-top: 0px;
     margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
   }
+  h2,
   h3,
   h4,
   h5,

@@ -1,36 +1,53 @@
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import {
+  GoBackLink,
+  MovieBox,
+  MovieImg,
+  MovieDescriptionBox,
+  MovieInfo,
+  FeatureLink,
+  MovieTitle,
+  MovieInfoTitle,
+  MovieInfoText,
+} from './MovieCardBox.styled';
 
 const MovieCardBox = ({
   movie: { poster_path, title, vote_average, overview, genres },
 }) => {
+  const location = useLocation();
   return (
-    <>
-      <img
-        src={`https://www.themoviedb.org/t/p/w500${poster_path}`}
-        alt={title}
-      />
+    <MovieBox>
+      <GoBackLink to={location.state?.from}>Go Back</GoBackLink>
+      <MovieDescriptionBox>
+        <MovieImg
+          src={`https://www.themoviedb.org/t/p/w500${poster_path}`}
+          alt={title}
+        />
+        <MovieInfo>
+          <MovieTitle>{title}</MovieTitle>
+          <MovieInfoTitle>User Score</MovieInfoTitle>
+          <MovieInfoText>{vote_average.toFixed(1)}</MovieInfoText>
+          <MovieInfoTitle>Overview</MovieInfoTitle>
+          <MovieInfoText>{overview}</MovieInfoText>
+          <MovieInfoTitle>Genres</MovieInfoTitle>
+          <MovieInfoText>
+            {genres.map(({ name }) => name).join(', ')}
+          </MovieInfoText>
+        </MovieInfo>
+      </MovieDescriptionBox>
       <div>
-        <h2>{title}</h2>
-        <h3>User Score</h3>
-        <p>{vote_average.toFixed(1)}</p>
-        <h3>Overview</h3>
-        <p>{overview}</p>
-        <h3>Genres</h3>
-        <p>{genres.map(({ name }) => name).join(', ')}</p>
-      </div>
-      <div>
-        <h3>Additional info</h3>
+        <MovieInfoTitle>Additional info</MovieInfoTitle>
         <ul>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <FeatureLink to="cast">Cast</FeatureLink>
           </li>
           <li>
-            <NavLink to="review">Review</NavLink>
+            <FeatureLink to="review">Review</FeatureLink>
           </li>
         </ul>
       </div>
-    </>
+    </MovieBox>
   );
 };
 

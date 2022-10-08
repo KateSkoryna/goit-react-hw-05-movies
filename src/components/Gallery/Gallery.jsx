@@ -1,18 +1,19 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { MovieList, MovieItem, Link } from './Gallery.styled';
 
 const Gallery = ({ movies }) => {
   const location = useLocation();
   return (
-    <ul>
+    <MovieList>
       {movies.map(({ id, title }) => (
-        <li key={id}>
-          <NavLink to={`/movies/${id}`} state={{ from: location }}>
+        <MovieItem key={id}>
+          <Link to={`/movies/${id}`} state={{ from: location }}>
             {title}
-          </NavLink>
-        </li>
+          </Link>
+        </MovieItem>
       ))}
-    </ul>
+    </MovieList>
   );
 };
 

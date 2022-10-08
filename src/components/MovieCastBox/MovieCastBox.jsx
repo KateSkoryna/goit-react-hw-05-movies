@@ -4,6 +4,7 @@ import Loader from 'components/Loader';
 import { useFetchInfo } from 'hooks';
 import { fetchDataByCast } from 'services/api';
 import MovieCastContainer from 'components/MovieCastContainer';
+import { CastList, CastItem } from './MovieCastBox.stuled';
 
 const MovieCastBox = () => {
   const { id } = useParams();
@@ -14,15 +15,15 @@ const MovieCastBox = () => {
   return isLoading && movieInfo !== {} ? (
     <Loader />
   ) : (
-    <ul>
+    <CastList>
       {cast
         .map(({ id, ...restProps }) => (
-          <li key={id}>
+          <CastItem key={id}>
             <MovieCastContainer {...restProps} />
-          </li>
+          </CastItem>
         ))
         .filter((item, index) => index <= 8)}
-    </ul>
+    </CastList>
   );
 };
 

@@ -1,22 +1,29 @@
 import PropTypes from 'prop-types';
+import {
+  CastInfoList,
+  CastInfoItem,
+  CastImg,
+  CastInfoTitle,
+  CastInfoText,
+} from './MovieCastContainer.styled';
 
 const MovieCastContainer = ({ name, character, profile_path }) => {
   return (
     <>
-      <img
+      <CastImg
         src={`https://www.themoviedb.org/t/p/w500${profile_path}`}
         alt={character}
       />
-      <ul>
-        <li>
-          <h4>Name</h4>
-          <p>{name}</p>
-        </li>
-        <li>
-          <h4>Character</h4>
-          <p>{character}</p>
-        </li>
-      </ul>
+      <CastInfoList>
+        <CastInfoItem>
+          <CastInfoTitle>Name</CastInfoTitle>
+          <CastInfoText>{name}</CastInfoText>
+        </CastInfoItem>
+        <CastInfoItem>
+          <CastInfoTitle>Character</CastInfoTitle>
+          <CastInfoText>{character}</CastInfoText>
+        </CastInfoItem>
+      </CastInfoList>
     </>
   );
 };

@@ -6,7 +6,7 @@ export const Home = () => {
   const { movies, isLoading } = useFetchItems();
   return (
     <section>
-      <h2>Trandy Today</h2>
+      <h1>Trandy Today</h1>
       {isLoading && movies.length === 0 ? (
         <Loader />
       ) : (
