@@ -1,20 +1,20 @@
 import { Outlet } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import { Global } from '@emotion/react';
 import { GlobalStyles } from '../App/GlobalStyles.styled';
 import { Container } from '../App/Container.styled';
+import { Header, Navigation, Link } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
     <>
       <Global styles={GlobalStyles} />
       <Container>
-        <header>
-          <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/movies">Movies</NavLink>
-          </nav>
-        </header>
+        <Header>
+          <Navigation>
+            <Link to="/">Home</Link>
+            <Link to="/movies">Movies</Link>
+          </Navigation>
+        </Header>
         <Outlet />
       </Container>
     </>

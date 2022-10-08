@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const MovieCastContainer = ({ name, character, profile_path }) => {
   return (
@@ -20,5 +20,11 @@ const MovieCastContainer = ({ name, character, profile_path }) => {
     </>
   );
 };
+
+MovieCastContainer.propTypes = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  character: PropTypes.string.isRequired,
+  profile_path: PropTypes.string.isRequired,
+});
 
 export default MovieCastContainer;

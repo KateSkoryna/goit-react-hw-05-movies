@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const MovieReviewContainer = ({ author, content }) => {
   return (
@@ -8,5 +8,10 @@ const MovieReviewContainer = ({ author, content }) => {
     </>
   );
 };
+
+MovieReviewContainer.propTypes = PropTypes.shape({
+  author: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+});
 
 export default MovieReviewContainer;

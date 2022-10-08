@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const useFetchInfo = (id, fetchInfo) => {
   const [movieInfo, setMovieInfo] = useState({});
@@ -20,3 +21,6 @@ export const useFetchInfo = (id, fetchInfo) => {
 
   return { movieInfo, isLoading };
 };
+
+useFetchInfo.propTypes =
+  (PropTypes.string.isRequired, PropTypes.func.isRequired);

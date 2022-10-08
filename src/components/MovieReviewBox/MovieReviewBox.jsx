@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { fetchDataByReviews } from 'services/api';
 import Loader from 'components/Loader';
