@@ -57,11 +57,13 @@ const MovieCardBox = ({
   );
 };
 
-MovieCardBox.propTypes = PropTypes.shape({
-  poster_path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  vote_average: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.shape),
-});
+MovieCardBox.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.shape),
+  }),
+};
 export default MovieCardBox;
