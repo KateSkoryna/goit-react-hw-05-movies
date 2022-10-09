@@ -1,8 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import { Global } from '@emotion/react';
 import { GlobalStyles } from '../App/GlobalStyles.styled';
 import { Container } from '../App/Container.styled';
 import { Header, Navigation, Link } from './SharedLayout.styled';
+import Loader from 'components/Loader';
 
 const SharedLayout = () => {
   return (
@@ -17,7 +19,9 @@ const SharedLayout = () => {
             <Link to="/movies">Movies</Link>
           </Navigation>
         </Header>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );

@@ -1,10 +1,11 @@
 import { useParams, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import MovieCardBox from 'components/MovieCardBox';
 import Loader from 'components/Loader';
 import { useFetchInfo } from 'hooks';
 import { fetchDataById } from 'services/api';
 
-export const MovieCard = () => {
+const MovieCard = () => {
   const { id } = useParams();
   const { movieInfo, isLoading } = useFetchInfo(id, fetchDataById);
 
@@ -13,7 +14,11 @@ export const MovieCard = () => {
   ) : (
     <>
       <MovieCardBox movie={movieInfo} />
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
+
+export default MovieCard;

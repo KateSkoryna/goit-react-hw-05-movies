@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 export const MovieBox = styled.section`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 export const GoBackLink = styled(Link)`

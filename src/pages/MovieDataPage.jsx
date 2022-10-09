@@ -3,7 +3,7 @@ import Gallery from 'components/Gallery';
 import Loader from 'components/Loader';
 import { useFetchQuery } from 'hooks';
 
-export const MovieDataPage = () => {
+const MovieDataPage = () => {
   const { isLoading, movies, searchParams, addValue } = useFetchQuery();
 
   return (
@@ -13,3 +13,5 @@ export const MovieDataPage = () => {
     </section>
   );
 };
+
+export default MovieDataPage;

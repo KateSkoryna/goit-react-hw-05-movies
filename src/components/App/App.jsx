@@ -1,8 +1,16 @@
-import SharedLayout from '../../components/SharedLayout';
+import SharedLayout from 'components/SharedLayout';
 import { Route, Routes } from 'react-router-dom';
-import { Home, MovieCard, MovieDataPage } from 'pages';
-import MovieCastBox from 'components/MovieCastBox';
-import MovieReviewBox from 'components/MovieReviewBox';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('../../pages/Home'));
+const MovieCard = lazy(() => import('../../pages/MovieCard'));
+const MovieDataPage = lazy(() => import('../../pages/MovieDataPage'));
+const MovieCastBox = lazy(() =>
+  import('../../pages/MovieCastBox/MovieCastBox')
+);
+const MovieReviewBox = lazy(() =>
+  import('../../pages/MovieReviewBox/MovieReviewBox')
+);
 
 const App = () => {
   return (

@@ -16,10 +16,11 @@ const MovieCardBox = ({
   movie: { poster_path, title, vote_average, overview, genres },
 }) => {
   const location = useLocation();
+  const backLink = location.state?.from ?? '/movies';
 
   return (
     <MovieBox>
-      <GoBackLink to={location.state?.from ?? '/movies'}>Go Back</GoBackLink>
+      <GoBackLink to={backLink}>Go Back</GoBackLink>
       <MovieDescriptionBox>
         <MovieImg
           src={`https://www.themoviedb.org/t/p/w500${poster_path}`}
@@ -41,10 +42,14 @@ const MovieCardBox = ({
         <MovieInfoTitle>Additional info</MovieInfoTitle>
         <ul>
           <li>
-            <FeatureLink to="cast">Cast</FeatureLink>
+            <FeatureLink to="cast" state={{ from: backLink }}>
+              Cast
+            </FeatureLink>
           </li>
           <li>
-            <FeatureLink to="review">Review</FeatureLink>
+            <FeatureLink to="review" state={{ from: backLink }}>
+              Review
+            </FeatureLink>
           </li>
         </ul>
       </div>

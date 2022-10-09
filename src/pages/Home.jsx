@@ -2,7 +2,7 @@ import Gallery from 'components/Gallery';
 import Loader from 'components/Loader';
 import { useFetchItems } from 'hooks';
 
-export const Home = () => {
+ const Home = () => {
   const { movies, isLoading } = useFetchItems();
   return (
     <section>
@@ -14,4 +14,6 @@ export const Home = () => {
       )}
     </section>
   );
-};
+ };
+
+export default Home;
