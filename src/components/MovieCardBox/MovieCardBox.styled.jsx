@@ -5,6 +5,8 @@ export const MovieBox = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
 `;
 
 export const GoBackLink = styled(Link)`
