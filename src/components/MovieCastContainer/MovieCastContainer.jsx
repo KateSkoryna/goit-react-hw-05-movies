@@ -28,10 +28,10 @@ const MovieCastContainer = ({ name, character, profile_path }) => {
   );
 };
 
-MovieCastContainer.propTypes = PropTypes.shape({
+MovieCastContainer.propTypes = {
   name: PropTypes.string.isRequired,
   character: PropTypes.string.isRequired,
   profile_path: PropTypes.string.isRequired,
-});
+};
 
 export default MovieCastContainer;

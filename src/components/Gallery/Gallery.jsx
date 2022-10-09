@@ -17,6 +17,10 @@ const Gallery = ({ movies }) => {
   );
 };
 
-Gallery.propTypes = PropTypes.arrayOf(PropTypes.shape).isRequired;
+Gallery.propTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })
+).isRequired;
 
 export default Gallery;

@@ -10,9 +10,9 @@ const MovieReviewContainer = ({ author, content }) => {
   );
 };
 
-MovieReviewContainer.propTypes = PropTypes.shape({
+MovieReviewContainer.propTypes = {
   author: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-});
+};
 
 export default MovieReviewContainer;
